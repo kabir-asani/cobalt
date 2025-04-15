@@ -1,8 +1,15 @@
 import "./globals.css";
 
+import { Inter } from "next/font/google";
+
 import NavigationBar from "@/components/navigation-bar/NavigationBar";
 import { Metadata } from "next";
 import { PropsWithChildren } from "react";
+import Container from "@/components/container/Container";
+
+const inter = Inter({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Cobalt — Everything About The Essential Metal",
@@ -23,10 +30,11 @@ export const metadata: Metadata = {
 const RootLayout = (props: PropsWithChildren) => {
   return (
     <html>
-      <body>
+      <body className={inter.className}>
         <div className="flex flex-col items-stretch">
           <NavigationBar />
-          {props.children}
+          <div className="border-b-[1px] border-b-[#EAEAEA]" />
+          <Container className="py-4">{props.children}</Container>
         </div>
       </body>
     </html>
